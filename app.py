@@ -1,5 +1,5 @@
 from flask import Flask, render_template, jsonify, request
-from ai.traffic_predictor import predict_clear_time
+from traffic_predictor import predict_clear_time
 from database import get_connection, initialize_database
 import math
 
