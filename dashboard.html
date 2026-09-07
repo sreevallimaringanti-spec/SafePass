@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SafePass | Emergency Control Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet"
+          href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+</head>
+
+
+<body>
+
+    <!-- =====================================================
+         NAVBAR
+         ===================================================== -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            SafePass
+        </div>
+
+        <div class="nav-status">
+
+            <span class="status-dot"></span>
+
+            Emergency Control Dashboard
+
+        </div>
+
+    </nav>
+
+
+    <!-- =====================================================
+         MAIN DASHBOARD
+         ===================================================== -->
+
+    <main class="dashboard">
+
+
+        <!-- =================================================
+             DASHBOARD HEADER
+             ================================================= -->
+
+        <div class="dashboard-header">
+
+            <div>
+
+                <div class="badge">
+                    EMERGENCY RESPONSE
+                </div>
+
+                <h1>
+                    Emergency Control Center
+                </h1>
+
+                <p>
+                    Configure an emergency trip and prepare
+                    SafePass for intelligent route analysis.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             EMERGENCY TRIP SETUP
+             ================================================= -->
+
+        <section class="control-panel">
+
+            <div class="panel-card">
+
+                <h2>
+                    Emergency Trip Setup
+                </h2>
+
+                <p class="panel-description">
+                    Select the ambulance and destination hospital
+                    for the emergency trip.
+                </p>
+
+
+                <label for="ambulance">
+                    Select Ambulance
+                </label>
+
+                <select id="ambulance">
+
+                    <option value="">
+                        -- Select Ambulance --
+                    </option>
+
+                </select>
+
+
+                <label for="hospital">
+                    Select Hospital
+                </label>
+
+                <select id="hospital">
+
+                    <option value="">
+                        -- Select Hospital --
+                    </option>
+
+                </select>
+
+
+                <button
+                    id="initializeTrip"
+                    class="primary-button dashboard-button"
+                    type="button">
+
+                    Initialize Emergency Trip
+
+                </button>
+
+
+                <div
+                    id="tripMessage"
+                    class="trip-message">
+                </div>
+
+
+                <!-- Active Trip -->
+
+                <div
+                    id="activeTrip"
+                    class="active-trip">
+
+                    <h3>
+                        Active Emergency Trip
+                    </h3>
+
+                    <div class="trip-details">
+
+                        <div>
+                            <span>Trip ID</span>
+
+                            <strong id="tripId">
+                                -
+                            </strong>
+                        </div>
+
+
+                        <div>
+                            <span>Ambulance</span>
+
+                            <strong id="tripAmbulance">
+                                -
+                            </strong>
+                        </div>
+
+
+                        <div>
+                            <span>Destination</span>
+
+                            <strong id="tripHospital">
+                                -
+                            </strong>
+                        </div>
+
+
+                        <div>
+                            <span>Status</span>
+
+                            <strong id="tripStatus">
+                                -
+                            </strong>
+                        </div>
+
+
+                        <div>
+                            <span>Start Time</span>
+
+                            <strong id="tripStartTime">
+                                -
+                            </strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- System Status -->
+
+            <div class="panel-card status-card">
+
+                <h2>
+                    System Status
+                </h2>
+
+
+                <div class="status-row">
+
+                    <span>Traffic Data</span>
+
+                    <strong class="status-ready">
+                        SIMULATED
+                    </strong>
+
+                </div>
+
+
+                <div class="status-row">
+
+                    <span>AI Prediction</span>
+
+                    <strong class="status-ready">
+                        READY
+                    </strong>
+
+                </div>
+
+
+                <div class="status-row">
+
+                    <span>Vehicle Network</span>
+
+                    <strong class="status-ready">
+                        SIMULATED
+                    </strong>
+
+                </div>
+
+
+                <div class="status-row">
+
+                    <span>Routing Engine</span>
+
+                    <strong class="status-ready">
+                        READY
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             PROTOTYPE NOTICE
+             ================================================= -->
+
+        <section class="dashboard-notice">
+
+            <h3>
+                Prototype Data Notice
+            </h3>
+
+            <p>
+                SafePass currently uses simulated ambulance,
+                traffic and connected-vehicle data for demonstration.
+                Future deployment can integrate authorized
+                real-time data sources.
+            </p>
+
+        </section>
+
+
+        <!-- =================================================
+             TRAFFIC MONITORING
+             ================================================= -->
+<section class="dashboard-section system-stats-section">
+
+    <div class="section-header">
+        <div>
+            <h2>📊 Live System Overview</h2>
+            <p>
+                Current SafePass emergency mobility status.
+            </p>
+        </div>
+
+        <span class="prototype-badge">
+            SIMULATION
+        </span>
+    </div>
+
+    <div class="system-stats-grid">
+
+        <div class="system-stat-card">
+            <span>🚑 Active Ambulances</span>
+            <strong id="statAmbulances">--</strong>
+        </div>
+
+        <div class="system-stat-card">
+            <span>🛣️ Monitored Roads</span>
+            <strong id="statRoads">--</strong>
+        </div>
+
+        <div class="system-stat-card">
+            <span>⚠️ High-Risk Junctions</span>
+            <strong id="statHighRisk">--</strong>
+        </div>
+
+        <div class="system-stat-card">
+            <span>🧠 AI Status</span>
+            <strong id="statAI">READY</strong>
+        </div>
+
+    </div>
+
+</section>
+        <section class="traffic-section">
+
+            <div class="traffic-header">
+
+                <div>
+
+                    <div class="badge">
+                        TRAFFIC MONITORING
+                    </div>
+
+                    <h2>
+                        Road Traffic Conditions
+                    </h2>
+
+                    <p>
+                        Simulated traffic conditions used for
+                        emergency route analysis.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="traffic-table-container">
+
+                <table class="traffic-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Road / Junction</th>
+
+                            <th>Traffic</th>
+
+                            <th>Vehicles</th>
+
+                            <th>Avg Speed</th>
+
+                            <th>Time-to-Clear</th>
+
+                            <th>Risk</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="trafficTableBody">
+
+                        <tr>
+
+                            <td colspan="6">
+                                Loading traffic data...
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+         </section>
+
+
+        <!-- =================================================
+             AI TRAFFIC PREDICTION
+             ================================================= -->
+
+        <section class="dashboard-section ai-prediction-section">
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>
+                        🧠 AI Traffic Prediction
+                    </h2>
+
+                    <p>
+                        SafePass predicts the expected time required
+                        for congested road sections to clear.
+                    </p>
+
+                </div>
+
+                <span class="prototype-badge">
+                    AI PROTOTYPE
+                </span>
+
+            </div>
+
+
+            <div class="ai-prediction-grid">
+
+                <div class="ai-card">
+
+                    <span>
+                        Traffic Level
+                    </span>
+
+                    <strong id="aiTrafficLevel">
+                        --%
+                    </strong>
+
+                </div>
+
+
+                <div class="ai-card">
+
+                    <span>
+                        Average Speed
+                    </span>
+
+                    <strong id="aiAverageSpeed">
+                        -- km/h
+                    </strong>
+
+                </div>
+
+
+                <div class="ai-card">
+
+                    <span>
+                        Vehicle Count
+                    </span>
+
+                    <strong id="aiVehicleCount">
+                        --
+                    </strong>
+
+                </div>
+
+
+                <div class="ai-card highlight">
+
+                    <span>
+                        🧠 AI Time-to-Clear
+                    </span>
+
+                    <strong id="aiClearTime">
+                        -- sec
+                    </strong>
+
+                </div>
+                <div class="ai-card">
+
+    <span>
+        Model Confidence
+    </span>
+
+    <strong id="aiConfidence">
+        Prototype
+    </strong>
+
+</div>
+
+            </div>
+
+
+          <div
+    id="aiPredictionMessage"
+    class="alert alert-info">
+
+    <strong>🧠 AI Prediction Status</strong>
+    <br>
+
+    Waiting for traffic data...
+
+</div>
+        </section>
+
+
+        <!-- =================================================
+             EMERGENCY MAP
+             ================================================= -->
+
+        <!-- =================================================
+             EMERGENCY MAP
+             ================================================= -->
+
+        <section class="map-section">
+
+            <div class="map-header">
+
+                <div>
+
+                    <div class="badge">
+                        EMERGENCY MAP
+                    </div>
+
+                    <h2>
+                        SafePass Route Map
+                    </h2>
+
+                    <p>
+                        Interactive map for emergency route monitoring.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div id="map"></div>
+
+        </section>
+
+
+        <!-- =================================================
+             ROUTE INTELLIGENCE
+             ================================================= -->
+
+        <section class="card route-intelligence-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <h2>
+                        Route Intelligence
+                    </h2>
+
+                    <p>
+                        AI-assisted emergency route comparison
+                    </p>
+
+                </div>
+
+
+                <span class="risk risk-low">
+                    ANALYSIS READY
+                </span>
+
+            </div>
+
+
+            <div class="card-body">
+
+                <button
+                    id="analyzeRouteBtn"
+                    class="btn btn-primary"
+                    type="button">
+
+                    Analyze Emergency Routes
+
+                </button>
+
+
+                <div
+                    id="routeAnalysisMessage"
+                    class="alert alert-info"
+                    style="display: none;">
+                </div>
+
+
+                <div
+                    id="routeResults"
+                    class="route-grid"
+                    style="margin-top: 20px;">
+                </div>
+
+
+                <div
+                    id="recommendedRoute"
+                    class="alert alert-success"
+                    style="display: none; margin-top: 20px;">
+                </div>
+                <div
+    id="aiRouteReasoning"
+    class="ai-route-reasoning"
+    style="display: none;">
+
+    <h3>🧠 Why SafePass Chose This Route</h3>
+
+    <p id="aiRouteReasoningText">
+        AI route reasoning will appear here.
+    </p>
+
+</div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             DYNAMIC EMERGENCY CORRIDOR
+             ================================================= -->
+
+        <section class="dashboard-section corridor-section">
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>
+                        🚨 Dynamic Emergency Corridor
+                    </h2>
+
+                    <p>
+                        SafePass prioritizes the recommended emergency
+                        route using simulated junction conditions.
+                    </p>
+
+                </div>
+
+
+                <span class="prototype-badge">
+                    PROTOTYPE SIMULATION
+                </span>
+
+            </div>
+
+
+            <div
+                id="corridorMessage"
+                class="alert alert-info">
+
+                Analyze an emergency route to generate
+                the dynamic corridor.
+
+            </div>
+
+
+            <div
+                id="corridorPanel"
+                style="display: none;">
+
+
+                <div class="corridor-summary">
+
+                    <div class="corridor-score-card">
+
+                        <span>
+                            Corridor Efficiency
+                        </span>
+
+                        <strong id="corridorScore">
+                            --
+                        </strong>
+
+                        <small>
+                            / 100
+                        </small>
+
+                    </div>
+
+
+                    <div class="corridor-route-card">
+
+                        <span>
+                            Recommended Route
+                        </span>
+
+                        <strong id="corridorRoute">
+                            --
+                        </strong>
+
+                    </div>
+
+
+                    <div class="corridor-status-card">
+
+                        <span>
+                            Corridor Status
+                        </span>
+
+                        <strong id="corridorStatus">
+                            --
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Junction Priority -->
+
+                <div class="junction-container">
+
+                    <h3>
+                        Junction Priority Status
+                    </h3>
+
+                    <div
+                        id="junctionList"
+                        class="junction-list">
+                    </div>
+
+                </div>
+
+
+                <!-- Ambulance Movement -->
+
+                <div class="ambulance-movement-control">
+
+                    <button
+                        id="startMovementBtn"
+                        class="primary-button"
+                        type="button">
+
+                        🚑 Start Ambulance Movement
+
+                    </button>
+
+
+                    <span id="movementStatus">
+
+                        Ready for simulated movement
+
+                    </span>
+
+                </div>
+
+
+                <!-- Live ETA -->
+
+                <div class="live-eta-panel">
+
+                    <div class="eta-header">
+
+                        <div>
+
+                            <h3>
+                                ⏱️ Live ETA & Trip Progress
+                            </h3>
+
+                            <p>
+                                Simulated ambulance movement and
+                                estimated arrival monitoring.
+                            </p>
+
+                        </div>
+
+
+                        <span
+                            id="etaTripStatus"
+                            class="eta-status">
+
+                            READY
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="eta-grid">
+
+                        <div class="eta-card">
+
+                            <span>
+                                Estimated Arrival
+                            </span>
+
+                            <strong id="liveEta">
+                                -- min
+                            </strong>
+
+                        </div>
+
+
+                        <div class="eta-card">
+
+                            <span>
+                                Trip Progress
+                            </span>
+
+                            <strong id="tripProgress">
+                                0%
+                            </strong>
+
+                        </div>
+
+
+                        <div class="eta-card">
+
+                            <span>
+                                Current Route
+                            </span>
+
+                            <strong id="etaRoute">
+                                Emergency Corridor
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Journey Progress -->
+
+                    <div class="progress-section">
+
+                        <div class="progress-label">
+
+                            <span>
+                                Journey Progress
+                            </span>
+
+                            <strong id="tripProgressLabel">
+                                0%
+                            </strong>
+
+                        </div>
+
+
+                        <div class="progress-track">
+
+                            <div
+                                id="tripProgressBar"
+                                class="progress-bar"
+                                style="width: 0%;">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             CONNECTED VEHICLE ALERTS
+             ================================================= -->
+
+        <section class="dashboard-section vehicle-alert-section">
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>
+                        🚗 Connected Vehicle Alerts
+                    </h2>
+
+                    <p>
+                        Simulated vehicles receive emergency alerts
+                        when an ambulance approaches.
+                    </p>
+
+                </div>
+
+
+                <span class="prototype-badge">
+                    PROTOTYPE SIMULATION
+                </span>
+
+            </div>
+
+
+            <div
+                id="vehicleAlertMessage"
+                class="alert alert-info">
+
+                Generate an emergency corridor to activate
+                connected vehicle alerts.
+
+            </div>
+
+
+            <div
+                id="vehicleAlertPanel"
+                style="display: none;">
+
+                <div class="vehicle-alert-summary">
+
+                    <div class="vehicle-summary-card">
+
+                        <span>
+                            Nearby Vehicles
+                        </span>
+
+                        <strong id="nearbyVehicleCount">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="vehicle-summary-card">
+
+                        <span>
+                            Alerts Sent
+                        </span>
+
+                        <strong id="alertsSentCount">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="vehicle-summary-card">
+
+                        <span>
+                            Emergency Status
+                        </span>
+
+                        <strong id="vehicleEmergencyStatus">
+                            ACTIVE
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="vehicle-list-container">
+
+                    <h3>
+                        Nearby Connected Vehicles
+                    </h3>
+
+                    <div
+                        id="vehicleAlertList"
+                        class="vehicle-alert-list">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             DYNAMIC REROUTING
+             ================================================= -->
+
+        <section class="dashboard-section reroute-section">
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>
+                        🔄 Dynamic Rerouting
+                    </h2>
+
+                    <p>
+                        SafePass monitors changing traffic conditions
+                        and simulates emergency route recalculation.
+                    </p>
+
+                </div>
+
+
+                <span class="prototype-badge">
+                    PROTOTYPE SIMULATION
+                </span>
+
+            </div>
+
+
+            <div
+                id="rerouteMessage"
+                class="alert alert-info">
+
+                Start ambulance movement to activate
+                dynamic traffic monitoring.
+
+            </div>
+
+
+            <div
+                id="reroutePanel"
+                style="display: none;">
+
+                <div class="reroute-summary">
+
+                    <div class="reroute-card">
+
+                        <span>
+                            Status
+                        </span>
+
+                        <strong id="rerouteStatus">
+                            MONITORING
+                        </strong>
+
+                    </div>
+
+
+                    <div class="reroute-card">
+
+                        <span>
+                            Selected Route
+                        </span>
+
+                        <strong id="rerouteRoute">
+                            Current Route
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="reroute-reason">
+
+                    <span>
+                        Detection Reason
+                    </span>
+
+                    <strong id="rerouteReason">
+                        Monitoring simulated traffic conditions.
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SYSTEM INTELLIGENCE
+             ================================================= -->
+
+        <section class="dashboard-section intelligence-section">
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>
+                        🤖 SafePass System Intelligence
+                    </h2>
+
+                    <p>
+                        Combined emergency route and traffic
+                        intelligence for the active trip.
+                    </p>
+
+                </div>
+
+
+                <span class="prototype-badge">
+                    AI-ASSISTED PROTOTYPE
+                </span>
+
+            </div>
+
+
+            <div class="intelligence-grid">
+
+                <div class="intelligence-card">
+
+                    <span>
+                        Corridor Efficiency
+                    </span>
+
+                    <strong id="intelligenceEfficiency">
+                        --
+                    </strong>
+
+                    <small>
+                        / 100
+                    </small>
+
+                </div>
+
+
+                <div class="intelligence-card">
+
+                    <span>
+                        Traffic Condition
+                    </span>
+
+                    <strong id="intelligenceTraffic">
+                        MONITORING
+                    </strong>
+
+                </div>
+
+
+                <div class="intelligence-card">
+
+                    <span>
+                        Route Risk
+                    </span>
+
+                    <strong id="intelligenceRisk">
+                        --
+                    </strong>
+
+                </div>
+
+
+                <div class="intelligence-card">
+
+                    <span>
+                        AI Decision
+                    </span>
+
+                    <strong id="intelligenceDecision">
+                        READY
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="intelligenceMessage"
+                class="alert alert-info">
+
+                Analyze an emergency route to activate
+                SafePass system intelligence.
+
+            </div>
+            <div class="intelligence-summary">
+
+    <div class="intelligence-item">
+        <span>AI Traffic Analysis</span>
+        <strong>ACTIVE</strong>
+    </div>
+
+    <div class="intelligence-item">
+        <span>Emergency Route Analysis</span>
+        <strong>ACTIVE</strong>
+    </div>
+
+    <div class="intelligence-item">
+        <span>Dynamic Corridor</span>
+        <strong>READY</strong>
+    </div>
+
+    <div class="intelligence-item">
+        <span>Connected Vehicle Alerts</span>
+        <strong>SIMULATED</strong>
+    </div>
+
+</div>
+
+        </section>
+
+
+        <!-- =================================================
+             TRIP HISTORY
+             ================================================= -->
+
+        <section class="dashboard-section trip-history-section">
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>
+                        📋 Emergency Trip History
+                    </h2>
+
+                    <p>
+                        Recent emergency response trips recorded
+                        by the SafePass prototype.
+                    </p>
+
+                </div>
+
+
+                <span class="prototype-badge">
+                    DATABASE RECORDS
+                </span>
+
+            </div>
+
+<div class="trip-history-summary">
+
+    <div class="history-summary-card">
+        <span>Total Trips</span>
+        <strong id="totalTripsCount">0</strong>
+    </div>
+
+    <div class="history-summary-card">
+        <span>Active Trips</span>
+        <strong id="activeTripsCount">0</strong>
+    </div>
+
+    <div class="history-summary-card">
+        <span>Completed Trips</span>
+        <strong id="completedTripsCount">0</strong>
+    </div>
+
+</div>
+            <div
+                id="tripHistoryMessage"
+                class="alert alert-info">
+
+                Loading emergency trip history...
+
+            </div>
+
+
+            <div class="trip-history-container">
+
+                <table class="trip-history-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Trip ID</th>
+
+                            <th>Ambulance</th>
+
+                            <th>Hospital</th>
+
+                            <th>Status</th>
+
+                            <th>Start Time</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="tripHistoryBody">
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+<!-- =====================================================
+     SYSTEM ACTIVITY LOG
+     ===================================================== -->
+
+<section class="dashboard-section activity-section">
+
+    <div class="section-header">
+
+        <div>
+            <h2>📡 SafePass Activity Log</h2>
+            <p>
+                Recent emergency mobility system events.
+            </p>
+        </div>
+
+        <span class="prototype-badge">
+            LIVE SIMULATION
+        </span>
+
+    </div>
+
+    <div
+        id="activityLog"
+        class="activity-log">
+
+        <div class="activity-item">
+
+            <span class="activity-dot"></span>
+
+            <div>
+                <strong>System initialized</strong>
+                <small>
+                    SafePass monitoring services are ready.
+                </small>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+    </main>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+         ===================================================== -->
+
+    <!-- Leaflet JavaScript -->
+
+    <script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+    </script>
+
+
+    <!-- SafePass Map -->
+
+    <script
+        src="{{ url_for('static', filename='map.js') }}">
+    </script>
+
+
+    <!-- SafePass Main JavaScript -->
+
+    <script
+        src="{{ url_for('static', filename='script.js') }}">
+    </script>
+
+
+</body>
+
+</html>

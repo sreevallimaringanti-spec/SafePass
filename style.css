@@ -1,0 +1,1743 @@
+/* =========================================================
+   SAFEPASS — PROFESSIONAL WHITE + DARK RED THEME
+   ========================================================= */
+
+:root {
+    --primary-red: #8f1525;
+    --dark-red: #74101d;
+    --deep-red: #5d0b16;
+    --red: #b51f32;
+    --light-red: #fff1f3;
+
+    --blue: #1769aa;
+    --light-blue: #eef7ff;
+
+    --green: #15803d;
+    --light-green: #ecfdf3;
+
+    --orange: #c76b00;
+    --light-orange: #fff7e8;
+
+    --black: #17202a;
+    --text: #26313d;
+    --muted: #6b7280;
+
+    --border: #e5e7eb;
+    --background: #f7f8fa;
+    --white: #ffffff;
+
+    --shadow: 0 5px 20px rgba(20, 25, 30, 0.07);
+    --shadow-hover: 0 10px 28px rgba(20, 25, 30, 0.11);
+
+    --radius: 14px;
+}
+
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    font-family:
+        Inter,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+
+    background: var(--background);
+    color: var(--text);
+
+    line-height: 1.6;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   LINKS
+   ========================================================= */
+
+a {
+    color: var(--primary-red);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--dark-red);
+}
+
+
+/* =========================================================
+   HEADER / NAVBAR
+   ========================================================= */
+
+header,
+.navbar,
+.topbar {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+}
+
+.navbar {
+    min-height: 72px;
+    padding: 0 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo,
+.logo a,
+.brand,
+.brand a {
+    color: var(--primary-red);
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.logo {
+    font-size: 25px;
+}
+
+
+/* =========================================================
+   PAGE CONTAINER
+   ========================================================= */
+
+.container,
+.dashboard-container,
+.main-container {
+    width: min(1400px, calc(100% - 48px));
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   PAGE TITLE
+   ========================================================= */
+
+.page-title,
+.dashboard-title {
+    margin-bottom: 26px;
+}
+
+.page-title h1,
+.dashboard-title h1 {
+    margin: 0;
+    color: var(--black);
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -0.7px;
+}
+
+.page-title p,
+.dashboard-title p {
+    margin: 7px 0 0;
+    color: var(--muted);
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   DASHBOARD SECTIONS
+   ========================================================= */
+
+.dashboard-section {
+    position: relative;
+
+    background: var(--white);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+
+    padding: 26px;
+
+    margin-bottom: 24px;
+
+    box-shadow: var(--shadow);
+
+    transition:
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
+}
+
+.dashboard-section:hover {
+    box-shadow: var(--shadow-hover);
+}
+
+
+/* =========================================================
+   SECTION HEADER
+   ========================================================= */
+
+.section-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 22px;
+}
+
+.section-header h2 {
+    margin: 0;
+
+    color: var(--black);
+
+    font-size: 21px;
+    font-weight: 800;
+
+    letter-spacing: -0.3px;
+}
+
+.section-header h2::first-letter {
+    color: var(--primary-red);
+}
+
+.section-header p {
+    margin: 5px 0 0;
+
+    color: var(--muted);
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   PROTOTYPE BADGE
+   ========================================================= */
+
+.prototype-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 6px 11px;
+
+    border-radius: 999px;
+
+    background: var(--light-red);
+    color: var(--primary-red);
+
+    border: 1px solid #f3cbd1;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 0.7px;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   FORMS
+   ========================================================= */
+
+label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: var(--black);
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+
+    padding: 12px 14px;
+
+    background: var(--white);
+
+    border: 1px solid #d7dce2;
+    border-radius: 10px;
+
+    color: var(--text);
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--primary-red);
+
+    box-shadow:
+        0 0 0 3px rgba(143, 21, 37, 0.10);
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+button,
+.primary-button,
+.secondary-button {
+    border: none;
+
+    border-radius: 9px;
+
+    padding: 12px 18px;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
+}
+
+
+/* Main dark-red buttons */
+
+button.primary-button,
+.primary-button,
+#initializeTrip,
+#analyzeRouteBtn,
+#startMovementBtn {
+    background: var(--primary-red);
+    color: var(--white);
+
+    box-shadow:
+        0 4px 10px rgba(143, 21, 37, 0.18);
+}
+
+button.primary-button:hover,
+.primary-button:hover,
+#initializeTrip:hover,
+#analyzeRouteBtn:hover,
+#startMovementBtn:hover {
+    background: var(--dark-red);
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 7px 16px rgba(116, 16, 29, 0.22);
+}
+
+button.primary-button:active,
+.primary-button:active,
+#initializeTrip:active,
+#analyzeRouteBtn:active,
+#startMovementBtn:active {
+    transform: translateY(0);
+}
+
+button:disabled,
+.primary-button:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    transform: none;
+}
+
+
+/* =========================================================
+   SECONDARY BUTTON
+   ========================================================= */
+
+.secondary-button {
+    background: var(--white);
+
+    color: var(--primary-red);
+
+    border: 1px solid #d8aeb5;
+}
+
+.secondary-button:hover {
+    background: var(--light-red);
+}
+
+
+/* =========================================================
+   EMERGENCY ACTION AREA
+   ========================================================= */
+
+.emergency-section {
+    border-top: 4px solid var(--primary-red);
+}
+
+.emergency-section h2 {
+    color: var(--primary-red);
+}
+
+
+/* =========================================================
+   SELECTION GRID
+   ========================================================= */
+
+.selection-grid,
+.trip-selection-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 20px;
+
+    margin-bottom: 20px;
+}
+
+.selection-card,
+.form-group {
+    background: #fafafa;
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    padding: 17px;
+}
+
+
+/* =========================================================
+   ALERTS
+   ========================================================= */
+
+.alert {
+    border-radius: 10px;
+
+    padding: 13px 16px;
+
+    margin-top: 16px;
+
+    font-size: 13px;
+
+    border: 1px solid transparent;
+}
+
+.alert-info {
+    background: var(--light-blue);
+    color: #174a72;
+    border-color: #cfe5f7;
+}
+
+.alert-success {
+    background: var(--light-green);
+    color: #166534;
+    border-color: #bde8cc;
+}
+
+.alert-danger {
+    background: var(--light-red);
+    color: var(--deep-red);
+    border-color: #efb8c1;
+}
+
+.alert-warning {
+    background: var(--light-orange);
+    color: #8a4b00;
+    border-color: #f1d29c;
+}
+
+
+/* =========================================================
+   SYSTEM OVERVIEW
+   ========================================================= */
+
+.system-stats-section {
+    margin-bottom: 24px;
+}
+
+.system-stats-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 16px;
+
+    margin-top: 20px;
+}
+
+.system-stat-card {
+    position: relative;
+
+    background: var(--white);
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    padding: 20px;
+
+    box-shadow: 0 3px 12px rgba(20, 25, 30, 0.05);
+
+    overflow: hidden;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.system-stat-card::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 4px;
+    height: 100%;
+
+    background: var(--primary-red);
+}
+
+.system-stat-card:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 20px rgba(20, 25, 30, 0.09);
+}
+
+.system-stat-card span {
+    display: block;
+
+    font-size: 12px;
+
+    color: var(--muted);
+
+    margin-bottom: 9px;
+}
+
+.system-stat-card strong {
+    display: block;
+
+    color: var(--black);
+
+    font-size: 28px;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   MAP
+   ========================================================= */
+
+#map {
+    width: 100%;
+    height: 500px;
+    min-height: 500px;
+
+    border-radius: 14px;
+
+    overflow: hidden;
+
+    border: 1px solid var(--border);
+
+    margin-top: 20px;
+
+    box-shadow:
+        0 4px 16px rgba(20, 25, 30, 0.07);
+}
+
+
+/* =========================================================
+   LEAFLET POPUPS
+   ========================================================= */
+
+.leaflet-popup-content-wrapper {
+    border-radius: 10px;
+}
+
+.leaflet-popup-content {
+    font-family:
+        Inter,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    color: var(--text);
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   TRAFFIC TABLE
+   ========================================================= */
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    background: var(--white);
+}
+
+thead {
+    background: #fafafa;
+}
+
+th {
+    padding: 13px 12px;
+
+    color: #4b5563;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.5px;
+
+    text-align: left;
+
+    border-bottom: 1px solid var(--border);
+}
+
+td {
+    padding: 14px 12px;
+
+    color: var(--text);
+
+    font-size: 13px;
+
+    border-bottom: 1px solid #edf0f2;
+}
+
+tbody tr {
+    transition: background 0.15s ease;
+}
+
+tbody tr:hover {
+    background: #fafafa;
+}
+
+
+/* =========================================================
+   RISK BADGES
+   ========================================================= */
+
+.risk-low,
+.status-low {
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 5px 10px;
+
+    border-radius: 999px;
+
+    background: var(--light-green);
+
+    color: var(--green);
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.risk-medium,
+.status-medium {
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 5px 10px;
+
+    border-radius: 999px;
+
+    background: var(--light-orange);
+
+    color: var(--orange);
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.risk-high,
+.status-high {
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 5px 10px;
+
+    border-radius: 999px;
+
+    background: var(--light-red);
+
+    color: var(--primary-red);
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   AI PREDICTION
+   ========================================================= */
+
+.ai-prediction-section {
+    border-top: 3px solid var(--primary-red);
+}
+
+.ai-prediction-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, minmax(0, 1fr));
+
+    gap: 14px;
+
+    margin-top: 20px;
+}
+
+.ai-card {
+    background: var(--white);
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    padding: 18px;
+
+    min-height: 100px;
+
+    box-shadow:
+        0 3px 10px rgba(20, 25, 30, 0.04);
+}
+
+.ai-card span {
+    display: block;
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    margin-bottom: 8px;
+}
+
+.ai-card strong {
+    display: block;
+
+    color: var(--black);
+
+    font-size: 22px;
+
+    font-weight: 800;
+}
+
+.ai-card.highlight {
+    background: var(--light-red);
+
+    border-color: #e9b7bf;
+}
+
+.ai-card.highlight strong {
+    color: var(--primary-red);
+}
+
+
+/* =========================================================
+   ROUTE INTELLIGENCE
+   ========================================================= */
+
+.route-results {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 16px;
+
+    margin-top: 20px;
+}
+
+.route-card {
+    position: relative;
+
+    background: var(--white);
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    padding: 20px;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.route-card:hover {
+    transform: translateY(-2px);
+
+    box-shadow: var(--shadow-hover);
+}
+
+.route-card.recommended,
+.route-card.selected {
+    border: 2px solid var(--primary-red);
+
+    background: #fffafb;
+}
+
+.route-card.recommended::before,
+.route-card.selected::before {
+    content: "RECOMMENDED";
+
+    position: absolute;
+
+    top: 12px;
+    right: 12px;
+
+    padding: 4px 8px;
+
+    border-radius: 999px;
+
+    background: var(--primary-red);
+
+    color: var(--white);
+
+    font-size: 9px;
+    font-weight: 800;
+}
+
+.route-card h3 {
+    margin: 0 0 12px;
+
+    color: var(--black);
+
+    font-size: 17px;
+}
+
+.route-card strong {
+    color: var(--primary-red);
+}
+
+
+/* =========================================================
+   RECOMMENDED ROUTE
+   ========================================================= */
+
+#recommendedRoute {
+    border-left: 4px solid var(--primary-red);
+
+    background: #fffafb;
+}
+
+
+/* =========================================================
+   AI ROUTE REASONING
+   ========================================================= */
+
+.ai-route-reasoning {
+    margin-top: 18px;
+
+    padding: 18px;
+
+    background: var(--light-red);
+
+    border: 1px solid #edc4ca;
+
+    border-left: 4px solid var(--primary-red);
+
+    border-radius: 10px;
+}
+
+.ai-route-reasoning h3 {
+    margin: 0 0 7px;
+
+    color: var(--primary-red);
+
+    font-size: 15px;
+}
+
+.ai-route-reasoning p {
+    margin: 0;
+
+    color: var(--text);
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   EMERGENCY CORRIDOR
+   ========================================================= */
+
+.corridor-section {
+    border-top: 4px solid var(--primary-red);
+}
+
+.corridor-summary {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 16px;
+
+    margin-top: 20px;
+}
+
+.corridor-score-card,
+.corridor-route-card,
+.corridor-status-card {
+    background: var(--white);
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    padding: 20px;
+
+    box-shadow:
+        0 3px 10px rgba(20, 25, 30, 0.04);
+}
+
+.corridor-score-card span,
+.corridor-route-card span,
+.corridor-status-card span {
+    display: block;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    margin-bottom: 7px;
+}
+
+.corridor-score-card strong,
+.corridor-route-card strong,
+.corridor-status-card strong {
+    color: var(--primary-red);
+
+    font-size: 25px;
+
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   JUNCTION LIST
+   ========================================================= */
+
+.junction-container {
+    margin-top: 22px;
+}
+
+.junction-container h3 {
+    margin: 0 0 14px;
+
+    color: var(--black);
+
+    font-size: 16px;
+}
+
+.junction-list {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 12px;
+}
+
+.junction-item {
+    background: #fafafa;
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    padding: 14px;
+}
+
+
+/* =========================================================
+   CONNECTED VEHICLES
+   ========================================================= */
+
+.vehicle-alert-section {
+    border-top: 3px solid var(--primary-red);
+}
+
+.vehicle-alert-summary {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 16px;
+
+    margin-top: 20px;
+}
+
+.vehicle-summary-card {
+    background: var(--white);
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    padding: 20px;
+}
+
+.vehicle-summary-card span {
+    display: block;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    margin-bottom: 7px;
+}
+
+.vehicle-summary-card strong {
+    color: var(--primary-red);
+
+    font-size: 25px;
+
+    font-weight: 800;
+}
+
+.vehicle-list-container {
+    margin-top: 22px;
+}
+
+.vehicle-list-container h3 {
+    margin: 0 0 14px;
+
+    color: var(--black);
+
+    font-size: 16px;
+}
+
+.vehicle-alert-list {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 12px;
+}
+
+.vehicle-alert-card {
+    background: #fffafb;
+
+    border: 1px solid #edd0d4;
+
+    border-radius: 10px;
+
+    padding: 15px;
+}
+
+
+/* =========================================================
+   LIVE ETA
+   ========================================================= */
+
+.live-eta-panel {
+    margin-top: 22px;
+
+    padding: 22px;
+
+    background: #fffafb;
+
+    border: 1px solid #edc9ce;
+
+    border-radius: 13px;
+}
+
+.eta-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    gap: 20px;
+
+    margin-bottom: 18px;
+}
+
+.eta-header h3 {
+    margin: 0;
+
+    color: var(--black);
+
+    font-size: 17px;
+}
+
+.eta-header p {
+    margin: 4px 0 0;
+
+    color: var(--muted);
+
+    font-size: 12px;
+}
+
+.eta-status {
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 6px 11px;
+
+    border-radius: 999px;
+
+    background: var(--light-red);
+
+    color: var(--primary-red);
+
+    border: 1px solid #edc4ca;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.6px;
+}
+
+.eta-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 14px;
+}
+
+.eta-card {
+    background: var(--white);
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    padding: 17px;
+}
+
+.eta-card span {
+    display: block;
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    margin-bottom: 7px;
+}
+
+.eta-card strong {
+    color: var(--primary-red);
+
+    font-size: 22px;
+
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   PROGRESS BAR
+   ========================================================= */
+
+.progress-section {
+    margin-top: 20px;
+}
+
+.progress-label {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 8px;
+
+    font-size: 12px;
+
+    color: var(--muted);
+}
+
+.progress-label strong {
+    color: var(--primary-red);
+}
+
+.progress-track {
+    width: 100%;
+
+    height: 9px;
+
+    background: #eceff1;
+
+    border-radius: 999px;
+
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+
+    background: var(--primary-red);
+
+    border-radius: 999px;
+
+    transition: width 0.4s ease;
+}
+
+
+/* =========================================================
+   AMBULANCE MOVEMENT
+   ========================================================= */
+
+.ambulance-movement-control {
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    margin-top: 20px;
+
+    padding: 16px;
+
+    background: var(--white);
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+}
+
+#movementStatus {
+    color: var(--muted);
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   SYSTEM INTELLIGENCE
+   ========================================================= */
+
+.intelligence-section {
+    border-top: 3px solid var(--primary-red);
+}
+
+.intelligence-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 14px;
+
+    margin-top: 20px;
+}
+
+.intelligence-card {
+    background: var(--white);
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    padding: 19px;
+}
+
+.intelligence-card span {
+    display: block;
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    margin-bottom: 7px;
+}
+
+.intelligence-card strong {
+    display: block;
+
+    color: var(--black);
+
+    font-size: 21px;
+
+    font-weight: 800;
+}
+
+.intelligence-card:first-child strong,
+.intelligence-card:last-child strong {
+    color: var(--primary-red);
+}
+
+.intelligence-summary {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 12px;
+
+    margin-top: 18px;
+}
+
+.intelligence-item {
+    padding: 13px 15px;
+
+    background: #fafafa;
+
+    border: 1px solid var(--border);
+
+    border-radius: 9px;
+}
+
+.intelligence-item span {
+    display: block;
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    margin-bottom: 4px;
+}
+
+.intelligence-item strong {
+    color: var(--primary-red);
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   TRIP HISTORY
+   ========================================================= */
+
+.trip-history-summary {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 14px;
+
+    margin-bottom: 20px;
+}
+
+.history-summary-card {
+    background: var(--white);
+
+    border: 1px solid var(--border);
+
+    border-radius: 11px;
+
+    padding: 18px;
+
+    box-shadow:
+        0 3px 10px rgba(20, 25, 30, 0.04);
+}
+
+.history-summary-card span {
+    display: block;
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    margin-bottom: 6px;
+}
+
+.history-summary-card strong {
+    color: var(--primary-red);
+
+    font-size: 25px;
+
+    font-weight: 800;
+}
+
+.trip-history-status {
+    display: inline-block;
+
+    padding: 5px 10px;
+
+    border-radius: 999px;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.4px;
+
+    background: var(--light-green);
+
+    color: var(--green);
+}
+
+#tripHistoryBody td {
+    padding: 14px 12px;
+
+    vertical-align: middle;
+}
+
+#tripHistoryBody tr:hover {
+    background: #fafafa;
+}
+
+
+/* =========================================================
+   ACTIVITY LOG
+   ========================================================= */
+
+.activity-section {
+    margin-top: 24px;
+}
+
+.activity-log {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    margin-top: 20px;
+}
+
+.activity-item {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 13px;
+
+    padding: 15px 16px;
+
+    background: var(--white);
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.activity-item:hover {
+    background: #fffafb;
+
+    transform: translateX(2px);
+}
+
+.activity-dot {
+    width: 9px;
+    min-width: 9px;
+
+    height: 9px;
+
+    margin-top: 6px;
+
+    border-radius: 50%;
+
+    background: var(--primary-red);
+
+    box-shadow:
+        0 0 0 4px rgba(143, 21, 37, 0.08);
+}
+
+.activity-item strong {
+    display: block;
+
+    color: var(--black);
+
+    font-size: 13px;
+}
+
+.activity-item small {
+    display: block;
+
+    margin-top: 3px;
+
+    color: var(--muted);
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   MAP REROUTE ALERT
+   ========================================================= */
+
+.map-reroute-alert {
+    position: absolute;
+
+    top: 15px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    z-index: 1000;
+
+    width: min(90%, 420px);
+
+    padding: 11px 15px;
+
+    text-align: center;
+
+    background: var(--primary-red);
+
+    color: var(--white);
+
+    border-radius: 9px;
+
+    box-shadow:
+        0 8px 20px rgba(80, 10, 20, 0.25);
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   SPINNER
+   ========================================================= */
+
+.route-spinner {
+    display: inline-block;
+
+    width: 14px;
+    height: 14px;
+
+    margin-right: 7px;
+
+    border: 2px solid rgba(255, 255, 255, 0.4);
+
+    border-top-color: var(--white);
+
+    border-radius: 50%;
+
+    animation:
+        safePassSpin 0.7s linear infinite;
+
+    vertical-align: -2px;
+}
+
+@keyframes safePassSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer {
+    padding: 30px 20px;
+
+    text-align: center;
+
+    color: var(--muted);
+
+    font-size: 12px;
+}
+
+footer strong {
+    color: var(--primary-red);
+}
+
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f2f4;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c9cdd2;
+
+    border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #aeb3b9;
+}
+
+
+/* =========================================================
+   RESPONSIVE — TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .ai-prediction-grid {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+    }
+
+    .intelligence-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .intelligence-summary {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .route-results {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .container,
+    .dashboard-container,
+    .main-container {
+        width: min(100% - 28px, 1400px);
+    }
+
+    .navbar {
+        padding: 0 18px;
+    }
+
+    .dashboard-section {
+        padding: 20px;
+    }
+
+    .system-stats-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .selection-grid,
+    .trip-selection-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .corridor-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .vehicle-alert-summary {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .vehicle-alert-list {
+        grid-template-columns: 1fr;
+    }
+
+    .junction-list {
+        grid-template-columns: 1fr;
+    }
+
+    .eta-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .trip-history-summary {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE — SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .page-title h1,
+    .dashboard-title h1 {
+        font-size: 25px;
+    }
+
+    .section-header {
+        flex-direction: column;
+    }
+
+    .prototype-badge {
+        align-self: flex-start;
+    }
+
+    .system-stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ai-prediction-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .route-results {
+        grid-template-columns: 1fr;
+    }
+
+    .vehicle-alert-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .intelligence-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .intelligence-summary {
+        grid-template-columns: 1fr;
+    }
+
+    #map {
+        height: 400px;
+        min-height: 400px;
+    }
+
+    .ambulance-movement-control {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .ambulance-movement-control button {
+        width: 100%;
+    }
+}
+

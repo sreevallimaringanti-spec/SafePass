@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SafePass | Emergency Mobility System</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            SafePass
+        </div>
+
+        <div class="nav-status">
+            <span class="status-dot"></span>
+            Prototype System Online
+        </div>
+
+    </nav>
+
+
+    <main class="hero">
+
+        <div class="hero-content">
+
+            <div class="badge">
+                AI-POWERED EMERGENCY MOBILITY
+            </div>
+
+            <h1>
+                Clear the way for
+                <span>Emergency care.</span>
+            </h1>
+
+            <h2>
+                Dynamic routing for smarter emergency response.
+            </h2>
+
+            <p>
+                SafePass analyzes simulated traffic conditions,
+                predicts bottlenecks and estimates time-to-clear
+                for critical road sections to recommend an efficient
+                emergency route.
+            </p>
+
+            <div class="buttons">
+
+                <a href="/dashboard"
+                   class="primary-button">
+                    Start Emergency Trip
+                </a>
+
+                <a href="/dashboard"
+                   class="secondary-button">
+                    View System
+                </a>
+
+            </div>
+
+
+            <div class="features">
+
+                <div class="feature-card">
+                    <h3>AI Bottleneck Prediction</h3>
+
+                    <p>
+                        Predict potential congestion and
+                        identify high-risk road sections.
+                    </p>
+                </div>
+
+
+                <div class="feature-card">
+                    <h3>Time-to-Clear</h3>
+
+                    <p>
+                        Estimate how quickly critical
+                        road sections may clear.
+                    </p>
+                </div>
+
+
+                <div class="feature-card">
+                    <h3>Dynamic Corridor</h3>
+
+                    <p>
+                        Create an emergency route and
+                        simulate vehicle alerts.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>
