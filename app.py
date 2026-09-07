@@ -3,7 +3,8 @@ from traffic_predictor import predict_clear_time
 from database import get_connection, initialize_database
 import math
 
-app = Flask(__name__)
+app = Flask(__name__,template_folder=".",
+           static_folder=".")
 
 # Make sure the database exists
 initialize_database()
