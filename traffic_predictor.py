@@ -4,7 +4,7 @@ import joblib
 from pathlib import Path
 
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent
 
 DATA_FILE = BASE_DIR / "data" / "traffic_data.csv"
 MODEL_FILE = BASE_DIR / "ai" / "traffic_model.pkl"
